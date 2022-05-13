@@ -1,0 +1,20 @@
+{
+  "name": "my-page",
+  "version": "1.0.0",
+  "description": "My personal page in TypeScript",
+  "main": "index.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "personal page"
+  ],
+  "author": "farkon00",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.6.4"
+  }
+}
