@@ -28,6 +28,11 @@ body {
     text-align: right;
 }
 
+#tetris-canvas {
+    width: 15vw;
+    height: 15vw;
+}
+
 @media screen and (max-width: 600px) {
     .center-content {
         padding: 4rem 0.5rem !important;
