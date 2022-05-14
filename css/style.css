@@ -13,3 +13,13 @@ body {
 .purple-content {
     background-color: #543292;
 }
+
+.center-content {
+    padding: 7rem 15rem;
+}
+
+@media screen and (max-width: 600px) {
+    .center-content {
+        padding : 7rem 0 !important;
+    }
+}
