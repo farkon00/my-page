@@ -1,10 +1,15 @@
 body {
     width: 100%;
     overflow-x: hidden;
+    color: white;
 }
 
 .header {
     background-color: #6f42c1;
     width: 100vw;
     position: fixed;
+}
+
+.purple-content {
+    background-color: #543292;
 }
