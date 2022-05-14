@@ -19,8 +19,21 @@ body {
     padding: 7rem 15rem;
 }
 
+.project-desc {
+    width: 50%;
+}
+
+.project-desc-right {
+    margin-left: auto;
+    text-align: right;
+}
+
 @media screen and (max-width: 600px) {
     .center-content {
-        padding : 7rem 0 !important;
+        padding: 7rem 0 !important;
+    }
+
+    .project-desc {
+        width: 100% !important;
     }
 }
