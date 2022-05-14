@@ -1,0 +1,10 @@
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #6f42c1;
+    width: 100vw;
+    position: fixed;
+}
