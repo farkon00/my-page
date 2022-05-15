@@ -28,6 +28,10 @@ body {
     text-align: right;
 }
 
+.small-project-desc {
+    padding: 0 6rem;
+}
+
 #tetris-canvas {
     width: 15vw;
     height: 15vw;
