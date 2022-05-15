@@ -31,6 +31,7 @@ body {
 #tetris-canvas {
     width: 15vw;
     height: 15vw;
+    margin-right: 9rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -40,5 +41,9 @@ body {
 
     .project-desc {
         width: 100% !important;
+    }
+
+    #tetris-canvas {
+        margin-right: 0 !important;
     }
 }
