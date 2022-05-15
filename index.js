@@ -5,6 +5,7 @@ var canvas;
 var ctx;
 var canvasSize;
 var cellSize;
+var currentBlocks = [];
 let figures = [
     [
         [[0, 1], [1, 1], [2, 1], [3, 1]],
@@ -55,23 +56,34 @@ function drawGrid() {
     }
 }
 function drawBlock(cell) {
-    if (!cell.filled) {
-        return;
+    ctx.fillStyle = colors[cell.color];
+    ctx.fillRect(cell.x * cellSize, (cell.y - 4) * cellSize, cellSize, cellSize);
+}
+function newShape() {
+    let shape = Math.floor(Math.random() * figures.length);
+    let figure = figures[shape][Math.floor(Math.random() * figures[shape].length)];
+    for (let i = 0; i < figure.length; i++) {
+        currentBlocks.push({
+            x: figure[i][0] + 1,
+            y: figure[i][1],
+            color: shape
+        });
     }
-    ctx.fillStyle = colors[cell.color - 1];
-    ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
 }
 function runAnimationLoop() {
     ctx.clearRect(0, 0, canvasSize, canvasSize);
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvasSize, canvasSize);
     drawGrid();
-    drawBlock({ x: 1, y: 1, color: 1, filled: true });
-    drawBlock({ x: 1, y: 2, color: 2, filled: true });
-    drawBlock({ x: 2, y: 1, color: 3, filled: true });
-    drawBlock({ x: 2, y: 2, color: 4, filled: true });
-    drawBlock({ x: 3, y: 1, color: 5, filled: true });
-    drawBlock({ x: 1, y: 3, color: 6, filled: true });
+    for (let i = 0; i < currentBlocks.length; i++) {
+        if (currentBlocks[i].y > 3)
+            drawBlock(currentBlocks[i]);
+        currentBlocks[i].y++;
+        if (currentBlocks[i].y > 9) {
+            currentBlocks.splice(i, 1);
+            i--;
+        }
+    }
 }
 function updateCanvas() {
     canvas = document.getElementById("tetris-canvas");
@@ -81,3 +93,4 @@ function updateCanvas() {
 }
 updateCanvas();
 setInterval(runAnimationLoop, 1000 / FPS);
+newShape();

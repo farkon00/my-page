@@ -11,6 +11,7 @@ var canvas: HTMLCanvasElement;
 var ctx: CanvasRenderingContext2D;
 var canvasSize: number;
 var cellSize: number;
+var currentBlocks: Array<Cell> = [];
 
 let figures = [
     [
@@ -66,7 +67,19 @@ function drawGrid(): void {
 
 function drawBlock(cell: Cell): void {
     ctx.fillStyle = colors[cell.color];
-    ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
+    ctx.fillRect(cell.x * cellSize, (cell.y - 4) * cellSize, cellSize, cellSize);
+}
+
+function newShape(): void {
+    let shape = Math.floor(Math.random() * figures.length);
+    let figure = figures[shape][Math.floor(Math.random() * figures[shape].length)];
+    for (let i=0;i<figure.length;i++) {
+        currentBlocks.push({
+            x: figure[i][0] + 1,
+            y: figure[i][1],
+            color: shape
+        });
+    }
 }
 
 function runAnimationLoop(): void {
@@ -74,12 +87,14 @@ function runAnimationLoop(): void {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvasSize, canvasSize);
     drawGrid();
-    drawBlock({x : 1, y : 1, color : 1});
-    drawBlock({x : 1, y : 2, color : 2});
-    drawBlock({x : 2, y : 1, color : 3});
-    drawBlock({x : 2, y : 2, color : 4});
-    drawBlock({x : 3, y : 1, color : 5});
-    drawBlock({x : 1, y : 3, color : 6});
+    for (let i=0;i<currentBlocks.length;i++) {
+        if (currentBlocks[i].y > 3) drawBlock(currentBlocks[i]);
+        currentBlocks[i].y++;
+        if (currentBlocks[i].y > 9) {
+            currentBlocks.splice(i, 1);
+            i--;
+        }
+    }
 }
 
 function updateCanvas(): void {
@@ -91,3 +106,4 @@ function updateCanvas(): void {
 
 updateCanvas();
 setInterval(runAnimationLoop, 1000 / FPS);
+newShape();
