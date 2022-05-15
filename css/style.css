@@ -1,5 +1,5 @@
 body {
-    width: 100%;
+    width: 100vw;
     overflow-x: hidden;
     color: white;
     scroll-behavior: smooth;
@@ -36,7 +36,7 @@ body {
 
 @media screen and (max-width: 600px) {
     .center-content {
-        padding: 4rem 0.5rem !important;
+        padding: 4rem 1.3rem !important;
     }
 
     .project-desc {
