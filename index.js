@@ -1,5 +1,6 @@
 "use strict";
 let FPS = 3;
+let newShapeWait = 5;
 let gridWidth = 6;
 var canvas;
 var ctx;
@@ -94,3 +95,4 @@ function updateCanvas() {
 updateCanvas();
 setInterval(runAnimationLoop, 1000 / FPS);
 newShape();
+setInterval(newShape, 1000 / FPS * newShapeWait);

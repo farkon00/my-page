@@ -5,6 +5,7 @@ type Cell = {
 }
 
 let FPS: number = 3;
+let newShapeWait: number = 5;
 let gridWidth: number = 6;
 
 var canvas: HTMLCanvasElement;
@@ -107,3 +108,4 @@ function updateCanvas(): void {
 updateCanvas();
 setInterval(runAnimationLoop, 1000 / FPS);
 newShape();
+setInterval(newShape, 1000 / FPS * newShapeWait);
